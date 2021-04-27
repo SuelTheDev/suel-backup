@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2021/04/23 14:38:42.166,C:\Users\Swellington\Desktop\suel-backup\suelbackup.dproj=C:\Users\Swellington\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2021/04/23 17:07:28.381,=C:\Users\Swellington\Desktop\suel-backup\Unit1.pas</Transaction>
+	<Transactions>
+    <Transaction>2021/04/23 14:38:42.000.166,C:\Users\Swellington\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Swellington\Desktop\suel-backup\suelbackup.dproj</Transaction>
+    <Transaction>2021/04/23 17:07:28.000.381,=C:\Users\Swellington\Desktop\suel-backup\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

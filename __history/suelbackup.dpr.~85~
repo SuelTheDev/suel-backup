@@ -134,8 +134,14 @@ begin
         dirToSave := ini.ReadString('SUELBACKUP', 'dirtosave', TPath.GetTempPath);
         ini.Free;
         timestamp := Now;
-          Writeln(GetDosOutput(Format('%s\mysqldump.exe --compact --compress --skip-lock-tables --lock-tables=false --databases %s --user=%s --password=%s  >> %sbackup_%d.sql',
-            [mysqlDir, database, user, password, dirToSave, DateTimeToUNIXTimeFAST(timestamp)])));
+        if password <> '' then
+        begin
+          Writeln(GetDosOutput(Format('%s\mysqldump.exe -u %s -p %s --databases %s  —skip-lock-tables --compact> %sbackup_%d.sql', [mysqlDir, user, password, database, dirToSave, DateTimeToUNIXTimeFAST(timestamp)])));
+        end
+        else
+        begin
+          Writeln(GetDosOutput(Format('%s\mysqldump.exe -u %s --databases %s > %sbackup_%d.sql', [mysqlDir, user, database, dirToSave, DateTimeToUNIXTimeFAST(timestamp)])));
+        end;
         filepath := dirToSave + 'backup_' + IntToStr(DateTimeToUNIXTimeFAST(timestamp)) +'.sql';
         if TFile.Exists(filepath) then
         begin
@@ -162,10 +168,7 @@ begin
     end;
   except
     on E: Exception do
-    begin
       Writeln(E.ClassName, ': ', E.Message);
-      ReadLN;
-    end;
   end;
 
 end.

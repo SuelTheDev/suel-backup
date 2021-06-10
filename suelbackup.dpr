@@ -1,4 +1,4 @@
-ï»¿program suelbackup;
+program suelbackup;
 
 {$APPTYPE CONSOLE}
 {$R *.res}
@@ -24,10 +24,10 @@ begin
   Writeln('[SUELBACKUP]');
   Writeln('database=nome_do_seu_banco');
   Writeln('database_user=usuario');
-  Writeln('database_password=senha se houver, deixe em branco se nï¿½o houver');
+  Writeln('database_password=senha se houver, deixe em branco se não houver');
   Writeln('webhook=seuwebhook');
-  Writeln('mysqldir=diretï¿½rio onde tem o mysqldump.exe');
-  Writeln('file_path=caminho + nome do arquivo onde serï¿½ salvo o arquivo temporï¿½rio, se em branco, salva em /tmp/backup.sql');
+  Writeln('mysqldir=diretório onde tem o mysqldump.exe');
+  Writeln('file_path=caminho + nome do arquivo onde será salvo o arquivo temporário, se em branco, salva em /tmp/backup.sql');
   Writeln('');
   readln;
 end;
@@ -149,22 +149,26 @@ begin
       end
       else
       begin
-        Writeln('Verifique o arquivo de configuraï¿½ï¿½o, alguma coisa tï¿½ errada!');
+        Writeln('Verifique o arquivo de configuração, alguma coisa tá errada!');
         Writeln('');
         informacoes;
       end;
     end
     else
     begin
-      Writeln('Arquivo de configuraï¿½ï¿½o nï¿½o foi encontrado...');
+      Writeln('Arquivo de configuração não foi encontrado...');
       Writeln('');
       informacoes();
     end;
+    if ParamStr(1) = '-test' then
+    begin
+      readln;
+    end
   except
     on E: Exception do
     begin
       Writeln(E.ClassName, ': ', E.Message);
-      ReadLN;
+      ReadLn;
     end;
   end;
 
